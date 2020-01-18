@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Aware Browsing</title>
+    <style>
+      #browserHistory {
+        font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      #browserHistory td,
+      #browserHistory th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #browserHistory tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      #browserHistory tr:hover {
+        background-color: #ddd;
+      }
+
+      #browserHistory th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #ecb233;
+        color: white;
+      }
+      .button {
+        background-color: #ecb233; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>History & Why</h1>
+    <button class="button" id="clear_history">Clear History</button>
+    <table id="browserHistory">
+      <thead>
+        <th>Url</th>
+        <th>Reason</th>
+        <th>Date</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="options.js"></script>
+  </body>
+</html>

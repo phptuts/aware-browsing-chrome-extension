@@ -1,13 +1,22 @@
 (function() {
-  let currentUrl = '';
+  let currentUrlInfo = {
+    date: undefined,
+    url: undefined
+  };
 
   chrome.runtime.onInstalled.addListener(() => {
     chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-      if (currentUrl === tab.url || !tab.url) {
+      if (currentUrlInfo.date < new Date().getTime() - 5 * 60 * 1000) {
+        currentUrlInfo.url = undefined;
+      }
+      console.log(currentUrlInfo);
+      console.log(tab);
+      if (currentUrlInfo.url === tab.url || !tab.url) {
         return;
       }
-      currentUrl = tab.url;
-      const shortenUrl = new URL(currentUrl).hostname;
+      currentUrlInfo.url = tab.url;
+      currentUrlInfo.date = new Date().getTime();
+      const shortenUrl = new URL(currentUrlInfo.url).hostname;
       const reason =
         prompt(`Why are you going to this page ${shortenUrl}?`, 'Good idea!') ||
         'reason not known.';
@@ -15,7 +24,7 @@
         const reasons = data.reasons || [];
         const date = new Date();
         reasons.push({
-          url: currentUrl,
+          url: currentUrlInfo.url,
           time: date.getTime(),
           reason
         });

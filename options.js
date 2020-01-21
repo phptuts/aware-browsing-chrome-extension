@@ -1,6 +1,7 @@
 chrome.storage.sync.get('reasons', function(data) {
   const reasons = data.reasons || [];
   const tableBody = reasons.reduce(function(prev, current) {
+    const goodReasonText = current.goodReason ? 'Yes' : 'No';
     return (
       prev +
       '<tr>' +
@@ -8,7 +9,7 @@ chrome.storage.sync.get('reasons', function(data) {
       createUrlLink(current.url) +
       '</td>' +
       '<td>' +
-      current.reason +
+      goodReasonText +
       '</td>' +
       '<td>' +
       new Date(current.time * 1000).toLocaleString() +

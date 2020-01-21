@@ -12,6 +12,6 @@
   "permissions": ["storage", "<all_urls>", "notifications"],
   "background": {
     "scripts": ["eventPage.js"],
-    "persistent": false
+    "persistent": true
   }
 }
